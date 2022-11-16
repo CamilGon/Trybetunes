@@ -7,23 +7,11 @@ class Login extends Component {
     login: '',
     loading: false,
     loginField: false,
-    disableButton: true,
   };
 
   handleChange = ({ target: { name, value } }) => {
-    const minLength = 3;
     this.setState({
       [name]: value,
-    }, () => {
-      if (value.length >= minLength) {
-        this.setState({
-          disableButton: false,
-        });
-      } else {
-        this.setState({
-          disableButton: true,
-        });
-      }
     });
   };
 
@@ -35,8 +23,8 @@ class Login extends Component {
     });
     await createUser({ name: login });
     this.setState({
-      loginField: true,
       loading: false,
+      loginField: true,
     });
   };
 
@@ -45,8 +33,8 @@ class Login extends Component {
       login,
       loading,
       loginField,
-      disableButton,
     } = this.state;
+    const minLength = 3;
     return (
       <div data-testid="page-login">
         { loading === true ? (<h1>Carregando...</h1>) : (
@@ -67,7 +55,7 @@ class Login extends Component {
               name="button"
               data-testid="login-submit-button"
               onClick={ this.handleButton }
-              disabled={ disableButton }
+              disabled={ login.length < minLength }
             >
               Entrar
             </button>

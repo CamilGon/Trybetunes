@@ -16,6 +16,7 @@ export default class Search extends Component {
     const {
       artistInput,
     } = this.state;
+    const minLength = 2;
     return (
       <div data-testid="page-search">
         <Header />
@@ -32,7 +33,7 @@ export default class Search extends Component {
             type="button"
             name="button"
             data-testid="search-artist-button"
-            disabled={ artistInput.length < 2 }
+            disabled={ artistInput.length < minLength }
           >
             Pesquisar
           </button>
