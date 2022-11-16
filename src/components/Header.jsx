@@ -23,7 +23,7 @@ class Header extends Component {
         { loading === true ? (<div>Carregando...</div>)
           : (<div data-testid="header-user-name">{userName}</div>) }
         <div>
-          <Link data-testid="link-to-search" to="/search">Buscar</Link>
+          <Link data-testid="link-to-search" to="/search">Pesquisa</Link>
           <br />
           <Link data-testid="link-to-favorites" to="/favorites">Favoritos</Link>
           <br />
