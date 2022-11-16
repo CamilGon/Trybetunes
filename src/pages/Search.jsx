@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 
-export class Search extends Component {
+class Search extends Component {
   state = {
     artistInput: '',
     loading: false,
