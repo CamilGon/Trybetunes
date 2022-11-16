@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 
 class Search extends Component {
@@ -81,6 +81,7 @@ class Search extends Component {
 
     return (
       <div data-testid="page-search">
+        <Header />
         { loading === true ? (<h1>Carregando...</h1>) : (
           <form>
             <input
