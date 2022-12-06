@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from '../components/Loading';
 import MusicCard from '../components/MusicCard';
 
-export class Favorites extends Component {
+class Favorites extends Component {
   state = {
     load: false,
     storedFavs: [],
@@ -53,9 +52,5 @@ export class Favorites extends Component {
     );
   }
 }
-Favorites.propTypes = {
-  trackName: PropTypes.string.isRequired,
-  previewUrl: PropTypes.string.isRequired,
-  trackId: PropTypes.number.isRequired,
-}.isRequired;
+
 export default Favorites;
