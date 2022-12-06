@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import { getUser } from '../services/userAPI';
 import Loading from '../components/Loading';
 
-export default class Profile extends Component {
+class Profile extends Component {
   state = {
     load: false,
     users: [],
@@ -64,3 +64,4 @@ export default class Profile extends Component {
     );
   }
 }
+export default Profile;
