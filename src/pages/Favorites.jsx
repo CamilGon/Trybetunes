@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from '../components/Loading';
 import MusicCard from '../components/MusicCard';
+import Header from '../components/Header';
 
 class Favorites extends Component {
   state = {
@@ -31,6 +32,7 @@ class Favorites extends Component {
     } = this.state;
     return (
       <div data-testid="page-favorites">
+        <Header />
         { load ? <Loading /> : (
           storedFavs.map(({
             trackName,
