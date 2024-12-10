@@ -36,24 +36,22 @@ class Login extends Component {
     } = this.state;
     const minLength = 3;
     return (
-      <div data-testid="page-login">
+      <div className="login-container">
         { loading === true ? (<h1>Carregando...</h1>) : (
-          <form>
-            <label htmlFor="nome">
-              Nome:
-              <input
-                type="text"
-                name="login"
-                placeholder="Login do usuário"
-                data-testid="login-name-input"
-                value={ login }
-                onChange={ this.handleChange }
-              />
-            </label>
+          <form className="login-form">
+            <input
+              className="login-name-input"
+              type="text"
+              name="login"
+              placeholder="Usuário"
+              value={ login }
+              onChange={ this.handleChange }
+            />
+
             <button
+              className="login-button-input"
               type="button"
               name="button"
-              data-testid="login-submit-button"
               onClick={ this.handleButton }
               disabled={ login.length < minLength }
             >
