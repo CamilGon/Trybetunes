@@ -80,22 +80,22 @@ class Search extends Component {
     const minLength = 2;
 
     return (
-      <div data-testid="page-search">
+      <div className="page-search">
         <Header />
-        { loading === true ? (<h1>Carregando...</h1>) : (
-          <form>
+        { loading === true ? (loading) : (
+          <form className="search-artist">
             <input
+              className="search-artist-input"
               type="text"
               name="artistInput"
-              placeholder="Nome do artista ou banda"
-              data-testid="search-artist-input"
+              placeholder="Digite o nome do artista ou banda"
               value={ artistInput }
               onChange={ this.handleChange }
             />
             <button
+              className="search-artist-button"
               type="button"
               name="button"
-              data-testid="search-artist-button"
               disabled={ artistInput.length < minLength }
               onClick={ this.handleButton }
             >
@@ -103,11 +103,11 @@ class Search extends Component {
             </button>
           </form>
         )}
-
         <div>
           { activeButton ? <h2>{`Resultado de álbuns de: ${album}`}</h2> : null }
           { this.handleAlbums() }
         </div>
+
       </div>
     );
   }

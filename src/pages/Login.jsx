@@ -5,7 +5,7 @@ import { createUser } from '../services/userAPI';
 class Login extends Component {
   state = {
     login: '',
-    loading: false,
+
     loginField: false,
   };
 
@@ -18,12 +18,12 @@ class Login extends Component {
   handleButton = async () => {
     const { login } = this.state;
     this.setState({
-      loading: true,
+
       loginField: false,
     });
     await createUser({ name: login });
     this.setState({
-      loading: false,
+
       loginField: true,
     });
   };
@@ -31,34 +31,32 @@ class Login extends Component {
   render() {
     const {
       login,
-      loading,
       loginField,
     } = this.state;
     const minLength = 3;
     return (
       <div className="login-container">
-        { loading === true ? (<h1>Carregando...</h1>) : (
-          <form className="login-form">
-            <input
-              className="login-name-input"
-              type="text"
-              name="login"
-              placeholder="Usuário"
-              value={ login }
-              onChange={ this.handleChange }
-            />
+        <form className="login-form">
+          <input
+            className="login-name-input"
+            type="text"
+            name="login"
+            placeholder="Usuário"
+            value={ login }
+            onChange={ this.handleChange }
+          />
 
-            <button
-              className="login-button-input"
-              type="button"
-              name="button"
-              onClick={ this.handleButton }
-              disabled={ login.length < minLength }
-            >
-              Entrar
-            </button>
-          </form>
-        )}
+          <button
+            className="login-button-input"
+            type="button"
+            name="button"
+            onClick={ this.handleButton }
+            disabled={ login.length < minLength }
+          >
+            Entrar
+          </button>
+        </form>
+
         { loginField && <Redirect to="/search" /> }
       </div>
     );

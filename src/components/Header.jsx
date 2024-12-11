@@ -19,15 +19,15 @@ class Header extends Component {
   render() {
     const { userName, loading } = this.state;
     return (
-      <header data-testid="header-component">
+      <header className="header-component">
         { loading === true ? (<div>Carregando...</div>)
-          : (<div data-testid="header-user-name">{userName}</div>) }
+          : (<div className="header-user-name">{userName}</div>) }
         <div>
-          <Link data-testid="link-to-search" to="/search">Pesquisa</Link>
+          <Link className="link-to-search" to="/search">Pesquisa</Link>
           <br />
-          <Link data-testid="link-to-favorites" to="/favorites">Favoritos</Link>
+          <Link className="link-to-favorites" to="/favorites">Favoritos</Link>
           <br />
-          <Link data-testid="link-to-profile" to="/profile">Perfil</Link>
+          <Link className="link-to-profile" to="/profile">Perfil</Link>
         </div>
       </header>
     );

@@ -1,7 +1,8 @@
-.loading {
-  align-items: center;
-  display: flex;
-  justify-content: center;
+
+body {
+  background-color: #cdd4f8;
+  margin: 0; 
+  padding-top: 60px; 
 }
 
 .login-container {
@@ -49,4 +50,149 @@
   background-color: #a9b0d1;
   cursor: not-allowed;
 }
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #cdd4f8c4;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 10px solid rgba(255, 255, 255, 0.3);
+  border-top: 10px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  background: radial-gradient(circle, #a0a9d8, #cdd4f8);
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; 
+  margin-top: 80px; 
+  padding: 20px;
+}
+
+.header-component {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100vw; 
+  background-color: #56629c; 
+  color: #ffffff; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+   
+  z-index: 100; 
+}
+
+.header-user-name {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0 1vw; 
+}
+.header-links {
+  display: flex; 
+  margin-right: 20px;
+  gap: 15px; 
+}
+
+.link-to-search,
+.link-to-favorites,
+.link-to-profile {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.link-to-search:hover,
+.link-to-favorites:hover,
+.link-to-profile:hover {
+  background-color: #a9b0d1;;
+  color: #ffffff;
+  border-radius: 25vw;
+}
+
+.loading-container {
+  display: flex;
+  align-items: center;
+}
+
+.loading-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ffffff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.search-artist {
+  position: relative; 
+  margin: 20px auto; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%; 
+  max-width: 600px; 
+}
+
+.search-artist-input {
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 25px;
+  flex-grow: 1;
+  margin-right: 10px;
+  color: #3c446e;
+}
+
+.search-artist-input::placeholder {
+  color: #a0a0a0;
+  font-style: italic;
+}
+
+.search-artist-button {
+  background-color: #56629c;
+  color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-artist-button:disabled {
+  background-color: #a9b0d1;
+  cursor: not-allowed;
+}
+
+
 
