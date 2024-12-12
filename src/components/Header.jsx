@@ -22,7 +22,7 @@ class Header extends Component {
       <header className="header-component">
         { loading === true ? (<div>Carregando...</div>)
           : (<div className="header-user-name">{userName}</div>) }
-        <div>
+        <div className="header-links">
           <Link className="link-to-search" to="/search">Pesquisa</Link>
           <br />
           <Link className="link-to-favorites" to="/favorites">Favoritos</Link>
