@@ -58,28 +58,27 @@ class MusicCard extends React.Component {
     return (
       <div>
         {load ? <Loading /> : (
-          <div>
-            <h1>{trackName}</h1>
+          <div className="music-card">
+            <h1 className="artist-name">{trackName}</h1>
             <audio data-testid="audio-component" src={ previewUrl } controls>
               <track kind="captions" />
               <code>audio</code>
-
             </audio>
-            <label htmlFor={ trackId }>
+            <label className="album-artist-font" htmlFor={ trackId }>
               Favoritar
               <input
-                data-testid={ `checkbox-music-${trackId}` }
                 type="checkbox"
                 name={ trackId }
                 id={ trackId }
-                checked={ getFave
-                  .some((music) => music.trackId === trackId) }
+                checked={ getFave.some((music) => music.trackId === trackId) }
                 onChange={ this.handleChange }
               />
             </label>
           </div>
+
         )}
       </div>
+
     );
   }
 }

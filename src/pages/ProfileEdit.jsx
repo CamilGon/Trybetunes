@@ -79,14 +79,17 @@ class Profile extends Component {
     return (
       <div data-testid="page-profile-edit">
         <Header />
-        { load ? <Loading /> : (
-          <div>
+        { load ? (
+          <Loading />
+        ) : (
+          <div className="profile-edit-container">
             <input
               data-testid="edit-input-image"
               type="text"
               name="image"
               value={ image }
               onChange={ this.onInputChange }
+              placeholder="URL da Imagem"
             />
             <span>Nome</span>
             <input
@@ -124,6 +127,7 @@ class Profile extends Component {
         )}
         { isRedirecting && <Redirect to="/profile" /> }
       </div>
+
     );
   }
 }

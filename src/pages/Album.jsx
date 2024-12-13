@@ -32,25 +32,23 @@ class Album extends Component {
   render() {
     const { song, album, favoriteSong } = this.state;
     return (
-      <div data-testid="page-album">
+      <div className="page-search">
         <Header />
         <div>
-          <div className="container-album">
+          <span
+            className="title-results"
+          >
+            { song.collectionName }
+          </span>
+          <div className="field-results">
             <span
-              className="album-name"
-              data-testid="album-name"
-            >
-              { song.collectionName }
-            </span>
-            <span
-              className="artist-name"
-              data-testid="artist-name"
+              className="album-artist-card"
             >
               { song.artistName }
             </span>
           </div>
 
-          <div className="music-list">
+          <div className="field-results">
             {
               album.map((music) => (
                 <MusicCard

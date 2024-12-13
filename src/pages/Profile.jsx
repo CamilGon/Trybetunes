@@ -37,21 +37,12 @@ class Profile extends Component {
       name,
     } = users;
     return (
-      <div data-testid="page-profile">
+      <div className="page-profile">
         <Header />
-        Profile
-        { load ? <Loading /> : (
-          <div>
-            <img
-              data-testid="profile-image"
-              src={ image }
-              alt={ name }
-            />
-            <Link
-              to="/profile/edit"
-            >
-              Editar perfil
-            </Link>
+        {load ? (Loading) : (
+          <div className="profile-container">
+            <img data-testid="profile-image" src={ image } alt={ name } />
+            <Link to="/profile/edit">Editar perfil</Link>
             <span>Nome</span>
             <h1>{name}</h1>
             <span>E-mail</span>
@@ -61,6 +52,7 @@ class Profile extends Component {
           </div>
         )}
       </div>
+
     );
   }
 }

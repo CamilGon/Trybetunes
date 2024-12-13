@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
+import Loading from '../components/Loading';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 
 class Search extends Component {
@@ -9,12 +10,8 @@ class Search extends Component {
     loading: false,
     albuns: [],
     album: '',
-    activeButton: false };
-
-  shouldComponentUpdate() {
-    const { albuns } = this.state;
-    return (albuns);
-  }
+    activeButton: false,
+  };
 
   handleChange = ({ target: { value, name } }) => {
     this.setState({
@@ -25,10 +22,9 @@ class Search extends Component {
 
   handleButton = async () => {
     const { artistInput } = this.state;
-    this.setState({
-      loading: true,
-    });
+    this.setState({ loading: true });
     const response = await searchAlbumsAPI(artistInput);
+    console.log(response);
     this.setState({
       artistInput: '',
       loading: false,
@@ -39,50 +35,44 @@ class Search extends Component {
 
   handleAlbums = () => {
     const { activeButton, albuns } = this.state;
-    const album = albuns
-      .map(({
-        artista,
-        collectionName,
-        artistaUrl,
-        collectionId,
-      }) => (
-        <div
-          key={ `${collectionId}` }
-        >
-          <img
-            src={ artistaUrl }
-            alt={ collectionName }
-          />
-          <Link
-            data-testid={ `link-to-album-${collectionId}` }
-            to={ `/album/${collectionId}` }
-          >
-            <h4>{ collectionName }</h4>
-          </Link>
-          <h5>{ artista }</h5>
 
-        </div>));
     if (activeButton && albuns.length > 0) {
-      return album;
+      return albuns.map((album) => (
+        <div
+          className="album-artist-card"
+          key={ album.collectionId }
+        >
+          <h5 className="artist-name">{album.artistName}</h5>
+          <img
+            src={ album.artworkUrl100 }
+            alt={ album.collectionName }
+          />
+
+          <Link
+            className="collection-name"
+            to={ `/album/${album.collectionId}` }
+          >
+            <h4 className="collection-name">{ album.collectionName }</h4>
+          </Link>
+
+        </div>
+      ));
     }
     if (activeButton && albuns.length === 0) {
-      return <h2>Nenhum álbum foi encontrado</h2>;
+      return <h2 className="alert-message">Nenhum álbum foi encontrado</h2>;
     }
+
+    return null;
   };
 
   render() {
-    const {
-      loading,
-      artistInput,
-      album,
-      activeButton,
-    } = this.state;
+    const { loading, artistInput, album, activeButton } = this.state;
     const minLength = 2;
 
     return (
       <div className="page-search">
         <Header />
-        { loading === true ? (loading) : (
+        {loading ? (Loading) : (
           <form className="search-artist">
             <input
               className="search-artist-input"
@@ -95,7 +85,6 @@ class Search extends Component {
             <button
               className="search-artist-button"
               type="button"
-              name="button"
               disabled={ artistInput.length < minLength }
               onClick={ this.handleButton }
             >
@@ -103,11 +92,13 @@ class Search extends Component {
             </button>
           </form>
         )}
-        <div>
-          { activeButton ? <h2>{`Resultado de álbuns de: ${album}`}</h2> : null }
-          { this.handleAlbums() }
-        </div>
 
+        {activeButton && album && (
+          <h2 className="title-results">{`Resultado de álbuns de: ${album}`}</h2>
+        )}
+        <div className="field-results">
+          {this.handleAlbums()}
+        </div>
       </div>
     );
   }
